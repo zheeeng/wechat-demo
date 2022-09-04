@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微信登录</title>
+    <style>
+        #wx {
+            height: 100%;
+            width: 100%;
+        }
+
+        #wx #login {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 5px;
+        }
+</style>
+</head>
+<body>
+    <div id="wx">
+        <button id="login" onclick="wechatLogin()">微信登录</button>
+    </div>
+</body>
+<script>
+    const appid = "wx49dfcf8a42d6c7a9";
+    const redirect_uri = `${windlow.location.origin}/callback.html`;
+    const state = "whatever";
+    const scope = "snsapi_userinfo";
+    const response_type = "code";
+
+    function wechatLogin() {
+        const loginUrl = "https://open.weixin.qq.com/connect/oauth2/authorize" +
+            "?appid=" + appid +
+            "&redirect_uri=" + decodeURIComponent(redirect_uri) +
+            "&response_type=" + response_type +
+            "&scope=" + scope +
+            "&state=" + state +
+            "#wechat_redirect";
+        window.location.href = loginUrl;
+    }
+</script>
+</html>

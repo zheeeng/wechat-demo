@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微信登录</title>
+    <style>
+        #wx {
+            height: 100%;
+            width: 100%;
+        }
+
+        #wx #login {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 5px;
+        }
+</style>
+</head>
+<body>
+    <div id="wx">
+        <button id="login" onclick="wechatCallback()">微信回调</button>
+    </div>
+</body>
+<script>
+    var u = new URLSearchParams(window.location.search)
+
+    function wechatCallback () {
+        alert('请求后端 code', u.get('code'))
+        alert('请求后端 state', u.get('state'))
+    }
+</script>
+</html>
